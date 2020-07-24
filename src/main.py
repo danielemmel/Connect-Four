@@ -33,8 +33,9 @@ def main():
             print('Please input the column in which to place the next stone.')
             column = get_human_input(board)
         else:
-            column = ai_list[0](board, player_symbols[current_player])
-            print(f'AI {current_player + 1} chose column {column + 1}')
+            start = time.time()
+            column = ai_list[current_player](board, player_symbols, current_player)
+            print(f'AI {current_player + 1} chose column {column + 1} in {time.time() - start} seconds')
 
         insert_into_board(column, board, current_player)
         # additional newline between input and board
