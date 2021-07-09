@@ -3,9 +3,9 @@ import argparse
 
 def parse():
     parser = argparse.ArgumentParser()
-    parser.add_argument('-ai', '--AI', nargs='*', choices=['r', 'mm', 'ab'],
-                        help='Specifies which kind(s) of ai(s) should be playing, using r for random, mm for minmax, '
-                             'ab for alpha-beta pruning.', default=[])
+    parser.add_argument('-ai', '--AI', nargs='*', choices=['r'],
+                        help='Specifies which kind of ai(s) should be playing, using r for random.',
+                        default=[])
     args = vars(parser.parse_args())
     return args
 

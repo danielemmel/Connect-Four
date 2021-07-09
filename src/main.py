@@ -4,14 +4,12 @@ import time
 
 import numpy as np
 
-from AI.alpha_beta import choose_column as ab
-from AI.minmax import choose_column as mm
 from AI.rand import choose_column as r
 from logic import check_board, insert_into_board
 from parsing import parse, get_human_input
 from utils import pretty_print
 
-ai_map = {'r': r, 'mm': mm, 'ab': ab}
+ai_map = {'r': r}
 
 
 def main():
@@ -34,7 +32,8 @@ def main():
             column = get_human_input(board)
         else:
             start = time.time()
-            column = ai_list[current_player](board, player_symbols, current_player)
+            column = ai_list[current_player](board, player_symbols, current_player) if len(ai_list) > 1 else ai_list[0](
+                board, player_symbols, current_player)
             print(f'AI {current_player + 1} chose column {column + 1} in {time.time() - start} seconds')
 
         insert_into_board(column, board, current_player)
